@@ -1,0 +1,33 @@
+{
+  "name": "ml-bot",
+  "version": "3.1.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: pas de test spécifié\" && exit 1",
+    "start": "node .",
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "mumureslitteraires",
+    "discord",
+    "interserver"
+  ],
+  "author": "Thràvalgur",
+  "description": "[comment]: <> (Ce bot est un assistant de discussion et de gestion de rôles pour le serveur discord des Murmures Littéraires.)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thravalgur/ml-bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Thravalgur/ml-bot/issues"
+  },
+  "homepage": "https://github.com/Thravalgur/ml-bot#readme",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0"
+  }
+}

@@ -1,0 +1,139 @@
+{   "name" : "MLbot",
+    "Blue" : "68BBE3",
+    "website" : {
+        "home" : "(https://les-murmures-litteraires.fr/)",
+        "reglement" : "(https://les-murmures-litteraires.fr/reglement)",
+        "partenaires" : "(https://les-murmures-litteraires.fr/partenaires/)",
+        "concours" : "(https://les-murmures-litteraires.fr/inscription/)",
+        "modalites" : "(https://les-murmures-litteraires.fr/modalites/)",
+        "categories" : "(https://les-murmures-litteraires.fr/categories/)",
+        "newsletter" : "(https://les-murmures-litteraires.fr/communication)",
+        "association" : "(https://les-murmures-litteraires.fr/association/)",
+        "logo" : "https://les-murmures-litteraires.fr/wp-content/uploads/2022/09/Logo-ML.png"
+    },
+    "concours" : {
+        "rs" : "[Instagram](https://www.instagram.com/lesmurmureslitteraires/) | [Facebook](https://www.facebook.com/lesmurmureslitteraires/) | [LinkedIn](https://fr.linkedin.com/company/murmureslitteraires)",
+        "newsletter": "Pour vous abonner à notre newsletter et recevoir des informations exclusives : \n[Formulaire sur notre site](https://les-murmures-litteraires.fr/communication)",
+        "dons" : "Vous pouvez soutenir l'association et participer librement aux frais du concours sur [notre page HelloAsso](https://www.helloasso.com/associations/les-murmures-litteraires/) !"
+    },
+
+    "clientId" : "436331603200049182",
+    "ownerId" : "387277723137081345",
+    "ticketGuild" : "759445169840979970",
+    "hubGuild" : "593691896874795029",
+    "ticketChannel" : "975170536969744404",
+    "helpChannel" : "1048725063345635398",
+    "logsChannel": "759456614268534854",
+    "logsmlChannel": "1171139954374615181",
+    "parentOpened" : "1175378900843507734",
+    "banRole" : "1187183263765241947",
+    "inscritChannel" : "1175399358515126353",
+    "inscritRole" : "1175377290687938571",
+    "notifRole" : "936659839034216499",
+    "animRole" : "938829183344324629",
+
+    "Category" : [
+        {
+            "id" : "co",
+            "name" : "Contemporain",
+            "ticketparent" : "974645522520502292",
+            "hubparent" : "1111010620108714105",
+            "huberror": "1113907337745404054"
+        },
+        {
+            "id" : "fa",
+            "name" : "Fantasy",
+            "ticketparent" : "974645814574088202",
+            "hubparent" : "1111011981906944080",
+            "huberror": "1113909460239384756"
+        },
+        {
+            "id" : "uf",
+            "name" : "Urban Fantasy",
+            "ticketparent" : "974645759054053406",
+            "hubparent" : "1111012097971724401",
+            "huberror": "1113907828156010537"
+        },
+        {
+            "id" : "sf",
+            "name" : "Science-Fiction",
+            "ticketparent" : "974645708961509428",
+            "hubparent" : "1111012161553178624",
+            "huberror": "1113907909999476797"
+        },
+        {
+            "id" : "su",
+            "name" : "Suspense",
+            "ticketparent" : "924741747551117393",
+            "hubparent" : "1111012208554541167",
+            "huberror": "1113907976579858553"
+        },
+        {
+            "id" : "ro",
+            "name" : "Romance",
+            "ticketparent" : "924742383319527454",
+            "hubparent" : "1111012486309761034",
+            "huberror": "1113909872069709916"
+        },
+        {
+            "id" : "hi",
+            "name" : "Historique",
+            "ticketparent" : "974645447513763840",
+            "hubparent" : "1111012454596608052",
+            "huberror": "1113910163829690479"
+        },
+        {
+            "id" : "th",
+            "name" : "Théâtre",
+            "ticketparent" : "1108501395260317696",
+            "hubparent" : "1111012283167035423",
+            "huberror": "1113910272428626001"
+        }      
+    ],
+    "Juge" : [
+        {
+            "id" : "1",
+            "name" : "Juge 1 de la première étape de lecture",
+            "color" : "E3C152",
+            "icon" : "https://les-murmures-litteraires.fr/wp-content/uploads/2024/01/mlbot_1.png"
+        },
+        {
+            "id" : "2",
+            "name" : "Juge 2 de la première étape de lecture",
+            "color" : "E99F86",
+            "icon" : "https://les-murmures-litteraires.fr/wp-content/uploads/2024/01/mlbot_2.png"
+        },
+        {
+            "id" : "a",
+            "name" : "Juge A de la seconde étape de lecture",
+            "color" : "38B6FF",
+            "icon" : "https://les-murmures-litteraires.fr/wp-content/uploads/2024/01/mlbot_a.png"
+        },
+        {
+            "id" : "b",
+            "name" : "Juge B de la seconde étape de lecture",
+            "color" : "207EA9",
+            "icon" : "https://les-murmures-litteraires.fr/wp-content/uploads/2024/01/mlbot_b.png"
+        },
+        {
+            "id" : "c",
+            "name" : "Juge C de la seconde étape de lecture",
+            "color" : "0097B2",
+            "icon" : "https://les-murmures-litteraires.fr/wp-content/uploads/2024/01/mlbot_c.png"
+        },
+        {
+            "id" : "d",
+            "name" : "Juge D de la seconde étape de lecture",
+            "color" : "0CC0DF",
+            "icon" : "https://les-murmures-litteraires.fr/wp-content/uploads/2024/01/mlbot_d.png"
+        },
+        {
+            "id" : "ml",
+            "name" : "Un membre des ML responsable des échanges",
+            "color" : "68BBE3",
+            "icon" : "https://les-murmures-litteraires.fr/wp-content/uploads/2022/09/Logo-ML.png"
+        }
+    ],
+    "aboutText" : "./readme.md",
+    "messageLinkTime" : 3600000
+}
