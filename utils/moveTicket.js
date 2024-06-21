@@ -87,9 +87,10 @@ module.exports = {
 
 		// ajout du rôle d'inscrit si manquant
 		if (member.roles.cache.some(role => role.id === inscritrole)) {
-			return;
+			console.log('Rôle inscrit déjà présent');
 		}
 		else {
+			console.log('Rôle inscrit non présent, à rajouter')
 		// embed pour notifier de l'ajout du rôle
 			const addembed = new EmbedBuilder()
 				.setColor(config.Blue)
