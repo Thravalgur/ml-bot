@@ -131,7 +131,7 @@ module.exports = {
 		await client.channels.cache
 			.get(config.hublogsChannel)
 			.send({
-				embeds: [logsembed],
+				embeds: [hublogsembed],
 			}).catch(errHandler);
 		await console.log('Ouverture ticket réussie');
 
