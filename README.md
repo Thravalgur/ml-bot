@@ -12,12 +12,12 @@ La réutilisation de son code pour d'autres projets peut ne pas fonctionner.
 > This bot is made to work on specifics servers. Using its code for other projets might not work.
 
 ## ⚙️ Projet open source
-Développé avec [discord.js](https://discordjs.guide/) v14. Version actuelle : v 3.1
+Développé avec [discord.js](https://discordjs.guide/) v14. Version actuelle : v 3.3
 > Initialement inspiré des bots développés par
 >[Sayrix](https://github.com/Sayrix/ticket-bot) et [@Phil|Flipper#3621](https://github.com/FlipperLP/I-SH).
 
 ### English : Open source project
-> Developed with [discord.js](https://discordjs.guide/) v14. Current version : v 3.1
+> Developed with [discord.js](https://discordjs.guide/) v14. Current version : v 3.3
 > Initialement inspiré des bots développés par
 > [Sayrix](https://github.com/Sayrix/ticket-bot) et [@Phil|Flipper#3621](https://github.com/FlipperLP/I-SH).
 
