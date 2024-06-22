@@ -108,15 +108,28 @@ module.exports = {
 				throw (errHandler);
 			}
 		}
-		// embed pour les logs
+		// embed pour les logs sur le serveur externe
 		const logsembed = new EmbedBuilder()
 			.setColor(config.Blue)
 			.setTitle('Nouveau ticket ouvert')
 			.setDescription(`${user.displayName} (${user.username} / <@!${user.id}>). Discussion sur ${title}, inscrit en catégorie ${Category.name}.`)
 			.setTimestamp();
-			// logs pour l'ouverture effective du ticket
+		// embed pour les logs anonymes du serveur interne
+		const hublogsembed = new EmbedBuilder()
+			.setColor(config.Blue)
+			.setTitle('Nouveau ticket ouvert')
+			.setDescription(`Discussion sur ${title}, inscrit en catégorie ${Category.name}.`)
+			.setTimestamp();		
+		
+		// logs pour l'ouverture effective du ticket sur le serveur externe
 		await client.channels.cache
 			.get(config.logsChannel)
+			.send({
+				embeds: [logsembed],
+			}).catch(errHandler);
+		// logs pour l'ouverture effective du ticket sur le serveur externe
+		await client.channels.cache
+			.get(config.hublogsChannel)
 			.send({
 				embeds: [logsembed],
 			}).catch(errHandler);
