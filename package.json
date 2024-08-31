@@ -1,6 +1,6 @@
 {
   "name": "ml-bot",
-  "version": "3.3.0",
+  "version": "3.3.3",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: pas de test spécifié\" && exit 1",
