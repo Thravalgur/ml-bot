@@ -2,10 +2,6 @@
   "name": "ml-bot",
   "version": "3.3.3",
   "main": "bot.js",
-  "scripts": {
-    "test": "echo \"Error: pas de test spécifié\" && exit 1",
-    "start": "node .",
-    "lint": "eslint ."
   },
   "keywords": [
     "mumureslitteraires",
