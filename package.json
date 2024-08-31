@@ -1,7 +1,7 @@
 {
   "name": "ml-bot",
   "version": "3.3.3",
-  "main": "index.js",
+  "main": "bot.js",
   "scripts": {
     "test": "echo \"Error: pas de test spécifié\" && exit 1",
     "start": "node .",
