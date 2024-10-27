@@ -32,14 +32,11 @@ module.exports = {
 			// créer la boucle pour changer la couleur et l'url en fonction de l'auteur
 			const Juge = config.Juge.find((x) => x.id === interaction.options.getString('juge'));
 			// messages de confirmation
-			await interaction.reply({ content : `Message en préparation pour <#${destination}> (ID ${destination}), envoyé par : ${Juge.name}. 
-			\n Votre prochain message sera envoyé à la destination indiquée. Vous pouvez y joindre un fichier. 
-			\n Attention, si vous modifiez le message envoyé, cela ne sera pas transmis !
-			\n Si vous voulez annuler la commande, attendez : elle expirera au bout de 20 secondes.`, fetchReply: true }).catch(errHandler);
+			await interaction.reply({ content : `Message en préparation pour <#${destination}> (ID ${destination}), envoyé par : ${Juge.name}.\nCopiez-collez un message qui sera envoyé à la destination indiquée. Vous pouvez y joindre un fichier. \n-# Si ce que vous avez à dire ne tient pas sur un seul message, vous devrez utiliser la commande plusieurs fois. Après confirmation de l'envoi, votre message d'origine sera effacé et vous ne pourrez plus l'éditer. \n-# Si vous voulez annuler la commande, attendez : elle expirera au bout de 1 minute.`, fetchReply: true }).catch(errHandler);
 			// prendre en charge la récupération du message suivant
 			// filtrer par auteur du message
 			const filter = m => m.author.id === interaction.user.id;
-			await interaction.channel.awaitMessages({ filter, max: 1, time: 20_000, errors: ['time'] })
+			await interaction.channel.awaitMessages({ filter, max: 1, time: 60_000, errors: ['time'] })
 				.then(collected => {
 					const message = collected.first();
 					// vérifier si fichiers images ou documents joints
@@ -54,8 +51,7 @@ module.exports = {
 					const msgembed = new EmbedBuilder()
 						.setColor(Juge.color)
 						.setAuthor({ name: Juge.name, iconURL: Juge.icon })
-						.setDescription(`${textmsg}`)
-						.setTimestamp();
+						.setDescription(`${textmsg}`);
 					// envoi de l'embed
 					client.channels.cache
 						.get(destination)
@@ -63,19 +59,22 @@ module.exports = {
 							embeds: [msgembed],
 							files : files,
 						}).catch(errHandler);
-					// gestion de la longueur des messages
-					if (textmsg.length <= 1900) {
-						interaction.followUp(`Vous avez envoyé le message : \n>>> ${textmsg}`).catch(errHandler);
-					}
-					else {
-						interaction.followUp(`>>> ${textmsg.slice(0, 1800)} ... \n(Le message entier est trop long pour être affiché mais a été retransmis en intégralité)`).catch(errHandler);
-					}
+					// envoi de la confirmation côté jury
+					interaction.followUp({
+						content: `### <@${interaction.user.id}> a envoyé le message suivant : \n\n-# Réutiliser la commande : \`/send destination:${destination} juge:<Votre n°>\``,
+						embeds: [msgembed],
+						files : files,
+					}).catch(errHandler);
+					// suppression du message d'origine
+					message.delete();
 				})
+				// gestion de l'expiration de la commande
 				.catch(collected => {
-					interaction.followUp(`Erreur ou délai dépassé. Votre envoi de message a été annulé. \n Collecté : ${collected}`).catch(errHandler);
+					interaction.followUp(`Commande : \`/send destination:${destination}\` utilisée par :${Juge.name}. Erreur ou délai dépassé. Votre envoi de message a été annulé. \n Collecté : ${collected}`).catch(errHandler);
 					console.log('échec de la commande, collecté : ', collected);
 				});
 		}
+		// refus pour permissions insuffisantes
 		else {
 			await interaction.reply({
 				content: '❌ Vous n\'avez pas l\'autorisation d\'utiliser cette commande.',

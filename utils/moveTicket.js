@@ -1,8 +1,7 @@
 const { EmbedBuilder } = require('discord.js');
 const errHandler = (err) => {console.error('ERREUR avec l\'ouverture d\'un ticket :', err);};
 const config = require('../config.json');
-const varspath = '../config-vars.json';
-let vars = require(varspath);
+const QLQ = process.env.QLQ;
 
 module.exports = {
 	name: 'moveTicket',
@@ -13,9 +12,6 @@ module.exports = {
 		// prise en compte de la catégorie
 		const Category = config.Category.find((x) => x.id === interaction.values[0]);
 		if (!Category) return console.error(`ERREUR : la catégorie ${interaction.values[0]} n'est pas prise en charge !`);
-		// gérer le cache des variables
-		await delete require.cache[require.resolve(varspath)];
-		vars = require(varspath);
 		// récupérer le titre du manuscrit
 		const topictxt = interaction.channel.topic;
 		const replacerule1 = 'Demande pour votre manuscrit';
@@ -90,8 +86,8 @@ module.exports = {
 			console.log('Rôle inscrit déjà présent');
 		}
 		else {
-			console.log('Rôle inscrit non présent, à rajouter')
-		// embed pour notifier de l'ajout du rôle
+			console.log('Rôle inscrit non présent, à rajouter');
+			// embed pour notifier de l'ajout du rôle
 			const addembed = new EmbedBuilder()
 				.setColor(config.Blue)
 				.setTitle('Rôle reçu')
@@ -108,17 +104,29 @@ module.exports = {
 				throw (errHandler);
 			}
 		}
-		// embed pour les logs
+		// embed pour les logs sur le serveur externe
 		const logsembed = new EmbedBuilder()
 			.setColor(config.Blue)
 			.setTitle('Nouveau ticket ouvert')
 			.setDescription(`${user.displayName} (${user.username} / <@!${user.id}>). Discussion sur ${title}, inscrit en catégorie ${Category.name}.`)
 			.setTimestamp();
-			// logs pour l'ouverture effective du ticket
+		// embed pour les logs anonymes du serveur interne
+		const hublogsembed = new EmbedBuilder()
+			.setColor(config.Blue)
+			.setTitle('Nouveau ticket ouvert')
+			.setDescription(`Discussion sur ${title}, inscrit en catégorie ${Category.name}.`)
+			.setTimestamp();
+		// logs pour l'ouverture effective du ticket sur le serveur externe
 		await client.channels.cache
 			.get(config.logsChannel)
 			.send({
 				embeds: [logsembed],
+			}).catch(errHandler);
+		// logs pour l'ouverture effective du ticket sur le serveur externe
+		await client.channels.cache
+			.get(config.hublogsChannel)
+			.send({
+				embeds: [hublogsembed],
 			}).catch(errHandler);
 		await console.log('Ouverture ticket réussie');
 
@@ -133,7 +141,7 @@ module.exports = {
 			\nVous ne pouvez en aucun cas demander à l'auteur ou l'autrice de lever son anonymat ou lever celui des autres juges sans leur assentiment au cours de la discussion.
 			\n\n**Comment discuter ?** 
 			\nPour répondre, vous devez utiliser la commande /send. Il est conseillé de préparer votre message en avance pour éviter que l'envoi s'annule. Pour "destination", indiquez l'identifiant (ID) de la discussion : **${interaction.channel.id}**. Pour "juge", indiquez si vous étiez Juge 1 ou 2 à la première étape, ou Juge A, B, C ou D à la deuxième (voir le tableau du Qui lit quoi). Après l'envoi de la commande, écrivez le message que vous voulez envoyer. Vous pouvez y joindre des fichiers (images, documents) qui seront également transmis à l'auteur.              
-			\nLe tableau Qui lit quoi avec les informations sur les manuscrits, la correspondance des numéros des juges et les liens des fiches fusionnées : ${vars.quilitquoi}` },
+			\nLe tableau Qui lit quoi avec les informations sur les manuscrits, la correspondance des numéros des juges et les liens des fiches fusionnées : ${QLQ}` },
 			autoArchiveDuration: 10080,
 		}).catch(errHandler);
 		await newThread.lastMessage.pin().then(() => {

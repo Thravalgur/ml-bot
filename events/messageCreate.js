@@ -28,7 +28,7 @@ module.exports = {
 			.setDescription(messagetxt)
 			.setFooter(
 				{
-					text :`Pour répondre à ce message, utilisez la commmande /send et remplissez-la ainsi : /send destination:${message.channel.id} juge:<Votre nom de juge (N° ou lettre)>`,
+					text :`Pour répondre à ce message, préparez votre réponse d'avance et envoyez-la après avoir utilisé la commmande /send que vous devez remplir ainsi : /send destination:${message.channel.id} juge:<Votre nom de juge (N° ou lettre)>`,
 				},
 			)
 			.setTimestamp();
