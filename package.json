@@ -19,10 +19,11 @@
   },
   "homepage": "https://github.com/Thravalgur/ml-bot#readme",
   "dependencies": {
-    "discord.js": "^14.14.1",
-    "dotenv": "^16.3.1"
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.5",
+    "ml-bot": "file:"
   },
   "devDependencies": {
-    "eslint": "^8.56.0"
+    "eslint": "^8.57.1"
   }
 }

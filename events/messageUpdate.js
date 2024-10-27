@@ -15,8 +15,11 @@ module.exports = {
 			oldMessage.fetch().catch(errHandler);
 			oldMsg.push('*(Un ancien message a été édité et n\'a pas pu être récupéré)*');
 		}
+		else if (oldMessage.content.length <= 100) {
+			oldMsg.push(oldMessage.content.slice(0, 100));
+		}
 		else {
-			oldMsg.push(oldMessage.content.slice(0, 1000));
+			oldMsg.push(`${oldMessage.content.slice(0, 100)} [...]`);
 		}
 		// détecter les categories
 		const Category = config.Category.find((x) => x.ticketparent === newMessage.channel.parentId);
@@ -30,7 +33,7 @@ module.exports = {
 		const messagetxt = content ?? text;
 		// embed
 		const msgembed = new EmbedBuilder()
-			.setTitle(`Message retransmis venant de : ${newMessage.channel.name}`)
+			.setTitle(`Un message déjà retransmis a été édité dans : ${newMessage.channel.name}`)
 			.setColor(config.Blue)
 			.setDescription(messagetxt)
 			.addFields(
@@ -41,10 +44,9 @@ module.exports = {
 			)
 			.setFooter(
 				{
-					text :`Pour répondre à ce message, utilisez la commmande /send et remplissez-la ainsi : /send destination:${newMessage.channel.id} juge:<Votre nom de juge (N° ou lettre)>`,
+					text :`Pour répondre à ce message, préparez votre message d'avance et envoyez-le après avoir utilisé la commmande /send que vous devez remplir ainsi : /send destination:${newMessage.channel.id} juge:<Votre nom de juge (N° ou lettre)>.`,
 				},
-			)
-			.setTimestamp();
+			);
 		// send to mirror thread
 		const hubForum = client.channels.cache.find(channel => channel.id === Category.hubparent);
 		hubForum.threads.fetchArchived();
