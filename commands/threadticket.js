@@ -29,7 +29,7 @@ module.exports = {
 			.setTitle(title)
 			.setColor(config.Blue)
 			.setDescription(`${text}
-            \n\n Cliquez sur le bouton  ci-dessous pour ouvrir un ticket ! Expliquez votre demande de façon claire en mentionnant la personne à qui vous l'adresse à l'aide de @ suivi de son pseudonyme (exemple : @lesmurmureslitteraires : @Les Murmures Littéraires).
+            \n\n Cliquez sur le bouton  ci-dessous pour ouvrir un ticket ! Expliquez votre demande de façon claire en mentionnant la personne à qui vous l'adresse à l'aide de @ suivi de son pseudonyme (exemple : \`@lesmurmureslitteraires\` : @Les Murmures Littéraires).
 			`);
 		const askrow = new ActionRowBuilder()
 			.addComponents(
