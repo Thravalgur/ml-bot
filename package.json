@@ -1,6 +1,6 @@
 {
   "name": "ml-bot",
-  "version": "3.3.3",
+  "version": "3.3.4",
   "main": "bot.js",
   "keywords": [
     "mumureslitteraires",
@@ -25,5 +25,7 @@
   },
   "devDependencies": {
     "eslint": "^8.57.1"
-  }
+  },
+  "nodeVersion": "23.1.0",
+  "file": "bot.js"
 }
