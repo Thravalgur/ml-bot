@@ -19,9 +19,9 @@ module.exports = {
 			}
 		}
 		else if (interaction.isButton()) {
-			if (interaction.customId === 'ask-ticket') {
+			if (interaction.customId === 'ask-ml-ticket') {
 				console.log('demande d\'un ticket reçue');
-				const askTicket = require('../utils/askTicket.js');
+				const askTicket = require('../utils/askMLTicket.js');
 				try {
 					await askTicket.execute(interaction);
 				}
@@ -91,9 +91,9 @@ module.exports = {
 			}
 		}
 		else if (interaction.isModalSubmit()) {
-			if (interaction.customId === 'config-ticket') {
+			if (interaction.customId === 'config-ml-ticket') {
 				console.log('discussions : titre d\'un manuscrit participant reçu');
-				const configTicket = require('../utils/configTicket.js');
+				const configTicket = require('../utils/configMLTicket.js');
 				try {
 					await configTicket.execute(interaction);
 				}

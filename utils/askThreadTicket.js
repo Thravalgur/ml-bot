@@ -7,7 +7,7 @@ module.exports = {
 	async execute(interaction) {
 		// créer le ticket
 		const newThread = await interaction.channel.threads.create({
-			name: `Ticket ${interaction.user.displayName} (${interaction.user.username})`,
+			name: `Ticket ${interaction.member.displayName} (${interaction.user.username})`,
 			type: ChannelType.PrivateThread,
 			autoArchiveDuration: 10080,
 		}).catch(errHandler);

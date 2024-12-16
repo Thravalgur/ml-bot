@@ -12,11 +12,12 @@ module.exports = {
 				.setRequired(true))
 		.addStringOption(option =>
 			option.setName('juge')
-				.setDescription('Votre nom de juge (1 ou 2 / A, B, C ou D)')
+				.setDescription('Votre nom de juge (1 2, ou 3 / A, B, C ou D)')
 				.setRequired(true)
 				.addChoices(
 					{ name: '1 (étape 1)', value: '1' },
 					{ name: '2 (étape 1)', value: '2' },
+					{ name: '3 (étape 1)', value: '3' },
 					{ name: 'A (étape 2)', value: 'a' },
 					{ name: 'B (étape 2)', value: 'b' },
 					{ name: 'C (étape 2)', value: 'c' },
@@ -32,7 +33,11 @@ module.exports = {
 			// créer la boucle pour changer la couleur et l'url en fonction de l'auteur
 			const Juge = config.Juge.find((x) => x.id === interaction.options.getString('juge'));
 			// messages de confirmation
-			await interaction.reply({ content : `Message en préparation pour <#${destination}> (ID ${destination}), envoyé par : ${Juge.name}.\nCopiez-collez un message qui sera envoyé à la destination indiquée. Vous pouvez y joindre un fichier. \n-# Si ce que vous avez à dire ne tient pas sur un seul message, vous devrez utiliser la commande plusieurs fois. Après confirmation de l'envoi, votre message d'origine sera effacé et vous ne pourrez plus l'éditer. \n-# Si vous voulez annuler la commande, attendez : elle expirera au bout de 1 minute.`, fetchReply: true }).catch(errHandler);
+			await interaction
+				.reply({ 
+					content : `Message en préparation pour <#${destination}> (ID ${destination}), envoyé par : ${Juge.name}.\nCopiez-collez un message qui sera envoyé à la destination indiquée. Vous pouvez y joindre un fichier. \n-# Si ce que vous avez à dire ne tient pas sur un seul message, vous devrez utiliser la commande plusieurs fois. Après confirmation de l'envoi, votre message d'origine sera effacé et vous ne pourrez plus l'éditer. \n-# Si vous voulez annuler la commande, attendez : elle expirera au bout de 1 minute.`,
+					fetchReply: true })
+				.catch(errHandler);
 			// prendre en charge la récupération du message suivant
 			// filtrer par auteur du message
 			const filter = m => m.author.id === interaction.user.id;
