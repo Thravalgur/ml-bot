@@ -122,7 +122,7 @@ module.exports = {
 			.send({
 				embeds: [logsembed],
 			}).catch(errHandler);
-		// logs pour l'ouverture effective du ticket sur le serveur externe
+		// logs pour l'ouverture effective du ticket sur le serveur interne
 		await client.channels.cache
 			.get(config.hublogsChannel)
 			.send({
