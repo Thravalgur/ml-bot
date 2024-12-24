@@ -4,8 +4,8 @@ const config = require('../config.json');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('roles')
-		.setDescription('Envoyer le panneau de sélection des rôles'),
+		.setName('publicroles')
+		.setDescription('Envoyer le panneau de sélection des rôles pour le serveur public'),
 	async execute(interaction) {
 		// embed du panneau
 		const roleembed = new EmbedBuilder()
@@ -30,9 +30,9 @@ module.exports = {
 					`,
 				},
 				{
-					name:'Concours 2024',
+					name:'Concours 2025',
 					value:`
-					:book:  Si vous avez inscrit un manuscrit à la cinquième édtion des Murmures Littéraires, vous pouvez accéder à l'espace réservé aux <@&${config.inscritRole}> où vous pourrez discuter avec les autres inscrits !
+					:book:  Si vous avez inscrit un manuscrit à la sixième édtion des Murmures Littéraires, vous pouvez accéder à l'espace réservé aux <@&${config.inscritRole}> où vous pourrez discuter avec les autres inscrits !
 					`,
 				},
 			);
