@@ -16,7 +16,7 @@ module.exports = {
 		// créer un formulaire pour demander le titre
 		const modaltitle = new ModalBuilder()
 			.setCustomId('send-inscrit')
-			.setTitle('Quel manuscrit avez-vous inscrit aux ML 5 ?');
+			.setTitle('Quel manuscrit avez-vous inscrit à l\'édition en cours ?');
 		// créer un champ dans le formulaire pour indiquer le titre
 		const titleInput = new TextInputBuilder ()
 			.setCustomId('titleInput')
