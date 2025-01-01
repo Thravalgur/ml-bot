@@ -65,7 +65,7 @@ module.exports = {
 				},
 				{
 					name:'Que faire en cas de problème ?',
-					value:`Merci de reporter tout problème (technique ou relatif à la teneur des échanges) dans ⁠<#${config.helpChannel}> ou en message privé à l'un des membres du Conseil d'Administration.`,
+					value:`Merci de reporter tout problème (technique ou relatif à la teneur des échanges) dans <#${config.helpChannel}> ou en message privé à l'un des membres du Conseil d'Administration.`,
 				},
 
 			)
@@ -108,25 +108,19 @@ module.exports = {
 		const logsembed = new EmbedBuilder()
 			.setColor(config.Blue)
 			.setTitle('Nouveau ticket ouvert')
-			.setDescription(`${user.displayName} (${user.username} / <@!${user.id}>). Discussion sur ${title}, inscrit en catégorie ${Category.name}.`)
-			.setTimestamp();
-		// embed pour les logs anonymes du serveur interne
-		const hublogsembed = new EmbedBuilder()
-			.setColor(config.Blue)
-			.setTitle('Nouveau ticket ouvert')
-			.setDescription(`Discussion sur ${title}, inscrit en catégorie ${Category.name}.`)
-			.setTimestamp();
+			.setDescription(`Discussion sur ${title}, inscrit en catégorie ${Category.name}.`);
 		// logs pour l'ouverture effective du ticket sur le serveur externe
 		await client.channels.cache
 			.get(config.logsChannel)
 			.send({
+				content : `${user.displayName} (${user.username} / <@!${user.id}>) inscrit avec ${title} : <#${interaction.channel.id}>.`,
 				embeds: [logsembed],
 			}).catch(errHandler);
 		// logs pour l'ouverture effective du ticket sur le serveur interne
 		await client.channels.cache
 			.get(config.hublogsChannel)
 			.send({
-				embeds: [hublogsembed],
+				embeds: [logsembed],
 			}).catch(errHandler);
 		await console.log('Ouverture ticket réussie');
 
