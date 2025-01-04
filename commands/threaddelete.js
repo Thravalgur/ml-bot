@@ -30,7 +30,7 @@ module.exports = {
 				}
 			});
 			await interaction.reply({
-				content: `Vous avez supprimé ${deletedsize} fils dans ${parent.name}.`,
+				content: `Vous avez supprimé ${deletedsize} fils dans <#${parent.id}>.`,
 			}).catch(errHandler)				
 				.then(console.log(`Suppression de ${deletedsize} fils dans ${parent.name}.`));
 		}
