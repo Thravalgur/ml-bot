@@ -41,11 +41,6 @@ module.exports = {
 					name: 'Ancien message',
 					value: `${oldMsg}`,
 				},
-			)
-			.setFooter(
-				{
-					text :`Pour répondre à ce message, préparez votre message d'avance et envoyez-le après avoir utilisé la commmande /send que vous devez remplir ainsi : /send destination:${newMessage.channel.id} juge:<Votre nom de juge (N° ou lettre)>.`,
-				},
 			);
 		// trouver le forum de la catégorie
 		const hubForum = client.channels.cache.find(channel => channel.id === Category.hubparent);

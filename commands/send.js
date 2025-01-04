@@ -36,7 +36,8 @@ module.exports = {
 			await interaction
 				.reply({ 
 					content : `Message en préparation pour <#${destination}> (ID ${destination}), envoyé par : ${Juge.name}.\nCopiez-collez un message qui sera envoyé à la destination indiquée. Vous pouvez y joindre un fichier. \n-# Si ce que vous avez à dire ne tient pas sur un seul message, vous devrez utiliser la commande plusieurs fois. Après confirmation de l'envoi, votre message d'origine sera effacé et vous ne pourrez plus l'éditer. \n-# Si vous voulez annuler la commande, attendez : elle expirera au bout de 1 minute.`,
-					fetchReply: true })
+					fetchReply: true,
+				 })
 				.catch(errHandler);
 			// prendre en charge la récupération du message suivant
 			// filtrer par auteur du message

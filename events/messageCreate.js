@@ -25,13 +25,7 @@ module.exports = {
 		const msgembed = new EmbedBuilder()
 			.setTitle(`Message retransmis de ${msgchannel}`)
 			.setColor(config.Blue)
-			.setDescription(messagetxt)
-			.setFooter(
-				{
-					text :`Pour répondre à ce message, préparez votre réponse d'avance et envoyez-la après avoir utilisé la commmande /send que vous devez remplir ainsi : /send destination:${message.channel.id} juge:<Votre nom de juge (N° ou lettre)>`,
-				},
-			)
-			.setTimestamp();
+			.setDescription(messagetxt);
 		// send to mirror thread
 		// trouver le forum de la catégorie
 		const hubForum = client.channels.cache.find(channel => channel.id === Category.hubparent);
