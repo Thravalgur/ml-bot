@@ -26,7 +26,7 @@ module.exports = {
 				thread.setLocked(false);
 		});
 			await interaction.reply({
-			content: `Vous avez désarchivé ${archsize} fils dans <#${parent.id}.`,
+			content: `Vous avez désarchivé ${archsize} fils dans <#${parent.id}>.`,
 		}).catch(errHandler)				
 			.then(console.log(`Désarchivage de ${archsize} fils dans ${parent.name}.`));
 		}
