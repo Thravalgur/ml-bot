@@ -33,14 +33,22 @@ module.exports = {
 			)
 			.setTimestamp();
 		// send to mirror thread
+		// trouver le forum de la catégorie
 		const hubForum = client.channels.cache.find(channel => channel.id === Category.hubparent);
-		hubForum.threads.fetchArchived();
-		hubForum.threads.fetchActive();
-		const hubThread = hubForum.threads.cache.find(thread => thread.name === message.channel.name);
+		// trouver le fil miroir 
+		const regularThread = hubForum.threads.cache.find(thread => thread.name === message.channel.name);
+		// trouver le fil miroir si archivé
+		const archived = await hubForum.threads.fetchArchived()            
+		const archivedThread = archived.threads.find(thread => thread.name === message.channel.name);
+		// vérifier si archivé
+		const hubThread = regularThread ?? archivedThread;
+		// vérifier si erreur
 		const errorThread = hubForum.threads.cache.find(thread => thread.id === Category.huberror);
 		const hub = hubThread ?? errorThread;
+		// désarchiver et déverouiller si archivé ou verouillé
 		await hub.setArchived(false);
 		await hub.setLocked(false);
+		// envoi
 		await hub.send({
 			embeds: [msgembed],
 			files : files,
