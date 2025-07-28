@@ -20,7 +20,7 @@
   "homepage": "https://github.com/Thravalgur/ml-bot#readme",
   "dependencies": {
     "discord.js": "^14.21.0",
-    "dotenv": "^16.4.7",
+    "dotenv": "^16.6.1",
     "ml-bot": "file:"
   },
   "devDependencies": {
