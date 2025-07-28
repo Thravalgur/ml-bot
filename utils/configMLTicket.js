@@ -1,4 +1,4 @@
-const { ActionRowBuilder, StringSelectMenuBuilder, ChannelType, PermissionsBitField, EmbedBuilder } = require('discord.js');
+const { ActionRowBuilder, StringSelectMenuBuilder, ChannelType, PermissionsBitField, EmbedBuilder, MessageFlags } = require('discord.js');
 const errHandler = (err) => {console.error('ERREUR avec la configuration d\'une discussion :', err);};
 const config = require('../config.json');
 
@@ -28,7 +28,7 @@ module.exports = {
 		await interaction.reply({
 			content: `Votre discussion aura lieu dans le salon suivant : <#${newTicket.id}>. 
             \nDernière étape avant l'ouverture de la discussion : indiquez la catégorie de votre manuscrit !`,
-			ephemeral: true,
+			flags: MessageFlags.Ephemeral,
 		}).catch(errHandler);
 		// créer l'embed pour demander la sélection
 		const embed = new EmbedBuilder()

@@ -1,4 +1,4 @@
-const { EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
+const { EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, MessageFlags } = require('discord.js');
 const errHandler = (err) => {console.error('ERREUR avec la demande de titre :', err);};
 const config = require('../config.json');
 
@@ -34,7 +34,7 @@ module.exports = {
 			// refuser l'envoi d'un autre ticket
 			await interaction.reply({
 				embeds: [noembed],
-				ephemeral: true,
+				flags: MessageFlags.Ephemeral,
 			}).catch(errHandler);
 		}
 		else {

@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, MessageFlags } = require('discord.js');
 const errHandler = (err) => {console.error('ERREUR avec la commande /roles :', err);};
 const config = require('../config.json');
 
@@ -33,14 +33,14 @@ module.exports = {
 			});
 			await interaction.reply({
 				content: 'Le panneau des tickets relayés au jury des ML a bien été envoyé',
-				ephemeral: true,
+				flags: MessageFlags.Ephemeral,
 			}).catch(errHandler)
 				.then(console.log('Bouton des tickets envoyé !'));
 		}
 		else {
 			interaction.reply({
 				content: '❌ Vous n\'avez pas l\'autorisation d\'utiliser cette commande.',
-				ephemeral: true,
+				flags: MessageFlags.Ephemeral,
 			});
 		}
 	},

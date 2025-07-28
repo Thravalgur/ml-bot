@@ -1,3 +1,4 @@
+const { MessageFlags } = require('discord.js');
 const config = require('../config.json');
 
 module.exports = {
@@ -15,7 +16,7 @@ module.exports = {
 				return interaction.reply({
 					content: `**ERREUR : la commande n'a pas été utilisée de la façon prévue ou ne fonctionne pas.**
 					\n Merci de contacter `,
-					ephemeral: true,
+					flags: MessageFlags.Ephemeral,
 				});
 			}
 		}
@@ -30,7 +31,7 @@ module.exports = {
 					console.error(error);
 					return interaction.reply({
 						content: `**ERREUR : votre ouverture de discussion n'a pas pu être traitée.**\n Merci de contacter la modération dans <#${config.helpChannel}> ou de prévenir <@${config.ownerId}>.`,
-						ephemeral: true,
+						flags: MessageFlags.Ephemeral,
 					});
 				}
 			}
@@ -44,7 +45,7 @@ module.exports = {
 					console.error(error);
 					return interaction.reply({
 						content: `**ERREUR : votre ouverture de ticket n'a pas pu être traitée.**${helpmessage}`,
-						ephemeral: true,
+						flags: MessageFlags.Ephemeral,
 					});
 				}
 			}
@@ -58,7 +59,7 @@ module.exports = {
 					console.error(error);
 					return interaction.reply({
 						content: `**ERREUR : votre demande du rôle Notifications n'a pas pu être traitée.**${helpmessage}`,
-						ephemeral: true,
+						flags: MessageFlags.Ephemeral,
 					});
 				}
 			}
@@ -72,7 +73,7 @@ module.exports = {
 					console.error(error);
 					return interaction.reply({
 						content: `**ERREUR : votre demande du rôle Scriptorium n'a pas pu être traitée.*${helpmessage}`,
-						ephemeral: true,
+						flags: MessageFlags.Ephemeral,
 					});
 				}
 			}
@@ -86,7 +87,7 @@ module.exports = {
 					console.error(error);
 					return interaction.reply({
 						content: `**ERREUR : votre demande du rôle d'Inscrit n'a pas pu être traitée.**${helpmessage}. Ne donnez le titre de votre roman qu'en message privé afin de ne pas rompre l'anonymat.`,
-						ephemeral: true,
+						flags: MessageFlags.Ephemeral,
 					});
 				}
 			}
@@ -102,7 +103,7 @@ module.exports = {
 					console.error(error);
 					return interaction.reply({
 						content: `**ERREUR : le titre que vous avez saisi n'a pas pu être traité.**\n Merci de contacter un modérateur dans <#${config.helpChannel}> ou de prévenir <@${config.ownerId}>.`,
-						ephemeral: true,
+						flags: MessageFlags.Ephemeral,
 					});
 				}
 			}
@@ -116,7 +117,7 @@ module.exports = {
 					console.error(error);
 					return interaction.reply({
 						content: `**ERREUR : le titre que vous avez saisi n'a pas pu être traité.**\n Merci de contacter un modérateur dans <#${config.helpChannel}> ou de prévenir <@${config.ownerId}>.`,
-						ephemeral: true,
+						flags: MessageFlags.Ephemeral,
 					});
 				}
 			}
@@ -131,8 +132,8 @@ module.exports = {
 				catch (error) {
 					console.error(error);
 					return interaction.reply({
-						content: `**ERREUR : la catégorie que vous avez sélectionnée n'a pas pu être attribuée.**\n Merci de contacter un modérateur dans <#${config.helpChannel}> ou de prévenir <@${config.ownerId}>.`,
-						ephemeral: true,
+						content: `**ERREUR : la catégorie que vous avez sélectionnée n'a pas pu être attribuée ou une erreur est survenue en cours de création du ticket.**\n Merci de contacter un modérateur dans <#${config.helpChannel}> ou de prévenir <@${config.ownerId}>.`,
+						flags: MessageFlags.Ephemeral,
 					});
 				}
 			}

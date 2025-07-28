@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require('discord.js');
+const { EmbedBuilder, MessageFlags } = require('discord.js');
 const errHandler = (err) => {console.error('ERREUR avec l\'ouverture d\'un ticket :', err);};
 const config = require('../config.json');
 const QLQ = process.env.QLQ;
@@ -97,7 +97,7 @@ module.exports = {
 			if (role) {
 				await interaction.reply({
 					embeds: [addembed],
-					ephemeral: true,
+					flags: MessageFlags.Ephemeral,
 				}).catch(errHandler);
 			}
 			else {
@@ -120,6 +120,7 @@ module.exports = {
 		await client.channels.cache
 			.get(config.hublogsChannel)
 			.send({
+				content : `Nouvelle discussion ouverte : ${title} dans le canal <#${interaction.channel.id}>.`,
 				embeds: [logsembed],
 			}).catch(errHandler);
 		await console.log('Ouverture ticket réussie');

@@ -1,4 +1,4 @@
-const { ChannelType } = require('discord.js');
+const { ChannelType, MessageFlags } = require('discord.js');
 const errHandler = (err) => {console.error('ERREUR avec la demande ouverture de ticket :', err);};
 const config = require('../config.json');
 
@@ -30,7 +30,7 @@ module.exports = {
 		}
 		await interaction.reply({
 			content: `Ouverture de ticket dans <#${newThread.id}> : vous pouvez y écrire votre demande.`,
-			ephemeral: true,
+			flags: MessageFlags.Ephemeral,
 		}).catch(errHandler)
 			.then(console.log('Bouton des tickets envoyé !'));
 	},

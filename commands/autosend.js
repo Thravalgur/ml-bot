@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder, ChannelType } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, ChannelType, MessageFlags } = require('discord.js');
 const errHandler = (err) => {console.error('ERREUR avec la commande /autosend :', err);};
 const config = require('../config.json');
 
@@ -34,7 +34,7 @@ module.exports = {
 			await interaction
 				.reply({ 
 					content : `Message en préparation pour <#${destinationID}>, envoyé par : ${Juge.name}.\nCopiez-collez un message qui sera envoyé à la destination indiquée. Vous pouvez y joindre un fichier. \n-# Si ce que vous avez à dire ne tient pas sur un seul message, vous devrez utiliser la commande plusieurs fois. Après confirmation de l'envoi, votre message d'origine sera effacé et vous ne pourrez plus l'éditer. \n-# Si vous voulez annuler la commande, attendez : elle expirera au bout de 1 minute.`,
-					ephemeral: true,					
+					flags: MessageFlags.Ephemeral,					
 					fetchReply: true,
 				 })
 				.catch(errHandler);
@@ -81,7 +81,7 @@ module.exports = {
 		else {
 			await interaction.reply({
 				content: '❌ Vous n\'avez pas l\'autorisation d\'utiliser cette commande.',
-				ephemeral: true,
+				flags: MessageFlags.Ephemeral,
 			});
 		}
 	},
