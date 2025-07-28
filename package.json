@@ -26,6 +26,6 @@
   "devDependencies": {
     "eslint": "^8.57.1"
   },
-  "nodeVersion": "23.1.0",
+  "nodeVersion": "23.7.0",
   "file": "bot.js"
 }
