@@ -21,15 +21,15 @@
     "ownerId" : "387277723137081345",
     "ticketGuild" : "759445169840979970",
     "hubGuild" : "593691896874795029",
-    "hublogsChannel" : "1254021797217566730",
+    "hublogsChannel" : "1399422190524301383",
     "ticketChannel" : "975170536969744404",
     "helpChannel" : "1175399358515126353",
     "logsChannel": "759456614268534854",
     "logsmlChannel": "1171139954374615181",
     "parentOpened" : "1175378900843507734",
     "banRole" : "1187183263765241947",
-    "inscritChannel" : "1175399358515126353",
-    "inscritRole" : "1175377290687938571",
+    "inscritChannel" : "1321119340115922977",
+    "inscritRole" : "1321105128425652366",
     "notifRole" : "936659839034216499",
     "animRole" : "938829183344324629",
 
@@ -77,6 +77,13 @@
             "huberror": "1113909872069709916"
         },
         {
+            "id" : "ri",
+            "name" : "Romance Imaginaire",
+            "ticketparent" : "1318165115685572668",
+            "hubparent" : "1318168301695926343",
+            "huberror": "1318168436068581398"
+        },
+        {
             "id" : "hi",
             "name" : "Historique",
             "ticketparent" : "974645447513763840",
@@ -104,6 +111,12 @@
             "color" : "E99F86",
             "icon" : "https://les-murmures-litteraires.fr/wp-content/uploads/2024/01/mlbot_2.png"
         },
+        {
+            "id" : "3",
+            "name" : "Juge 3 de la première étape de lecture",
+            "color" : "FF5757",
+            "icon" : "https://les-murmures-litteraires.fr/wp-content/uploads/2024/12/mlbot_3.png"
+        },        
         {
             "id" : "a",
             "name" : "Juge A de la seconde étape de lecture",

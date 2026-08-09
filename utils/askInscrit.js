@@ -1,4 +1,4 @@
-const { EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
+const { EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, MessageFlags } = require('discord.js');
 const errHandler = (err) => {console.error('ERREUR avec la demande du rôle Inscrit :', err);};
 const config = require('../config.json');
 
@@ -16,7 +16,7 @@ module.exports = {
 		// créer un formulaire pour demander le titre
 		const modaltitle = new ModalBuilder()
 			.setCustomId('send-inscrit')
-			.setTitle('Quel manuscrit avez-vous inscrit aux ML 5 ?');
+			.setTitle('Quel manuscrit avez-vous inscrit ?');
 		// créer un champ dans le formulaire pour indiquer le titre
 		const titleInput = new TextInputBuilder ()
 			.setCustomId('titleInput')
@@ -34,7 +34,7 @@ module.exports = {
 		if (member.roles.cache.some(role => role.id === inscritrole)) {
 			interaction.reply({
 				embeds: [noembed],
-				ephemeral: true,
+				flags: MessageFlags.Ephemeral,
 			}).catch(errHandler);
 		}
 		// afficher le formulaire (modal) si absence du rôle

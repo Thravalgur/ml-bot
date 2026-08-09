@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, MessageFlags } = require('discord.js');
 const errHandler = (err) => {console.error('ERREUR avec la commande /roles :', err);};
 const config = require('../config.json');
 
@@ -29,7 +29,7 @@ module.exports = {
 			.setTitle(title)
 			.setColor(config.Blue)
 			.setDescription(`${text}
-            \n\n Cliquez sur le bouton  ci-dessous pour ouvrir un ticket ! Expliquez votre demande de façon claire en mentionnant à qui vous l'adressez.
+            \n\n Cliquez sur le bouton  ci-dessous pour ouvrir un ticket ! Expliquez votre demande de façon claire en mentionnant la personne à qui vous l'adresse à l'aide de @ suivi de son pseudonyme (exemple : \`@lesmurmureslitteraires\` : <@899947330898370580>).
 			`);
 		const askrow = new ActionRowBuilder()
 			.addComponents(
@@ -47,14 +47,14 @@ module.exports = {
 			});
 			await interaction.reply({
 				content: 'Le panneau des tickets par fils privés a bien été envoyé',
-				ephemeral: true,
+				flags: MessageFlags.Ephemeral,
 			}).catch(errHandler)
 				.then(console.log('Bouton des tickets par fils privés envoyé !'));
 		}
 		else {
 			interaction.reply({
 				content: '❌ Vous n\'avez pas l\'autorisation d\'utiliser cette commande.',
-				ephemeral: true,
+				flags: MessageFlags.Ephemeral,
 			});
 		}
 	},

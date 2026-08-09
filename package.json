@@ -1,6 +1,6 @@
 {
   "name": "ml-bot",
-  "version": "3.3.3",
+  "version": "3.4",
   "main": "bot.js",
   "keywords": [
     "mumureslitteraires",
@@ -19,11 +19,13 @@
   },
   "homepage": "https://github.com/Thravalgur/ml-bot#readme",
   "dependencies": {
-    "discord.js": "^14.16.3",
-    "dotenv": "^16.4.5",
+    "discord.js": "^14.21.0",
+    "dotenv": "^16.6.1",
     "ml-bot": "file:"
   },
   "devDependencies": {
     "eslint": "^8.57.1"
-  }
+  },
+  "nodeVersion": "23.7.0",
+  "file": "bot.js"
 }

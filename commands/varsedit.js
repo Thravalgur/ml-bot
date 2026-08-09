@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, MessageFlags } = require('discord.js');
 const errHandler = (err) => {console.error('ERREUR avec la commande /varsedit :', err);};
 const config = require('../config.json');
 const { readFile, writeFile } = require('fs');
@@ -34,13 +34,13 @@ module.exports = {
 						console.log(`La variable ${variable} n'a pas pu être éditée`, err);
 						interaction.reply({
 							content: `La variable ${variable} n'a pas pu être éditée \n ${err}`,
-							ephemeral: true,
+							flags: MessageFlags.Ephemeral,
 						});
 					}
 					console.log(`La variable ${variable} a été éditée avec succès !`);
 					interaction.reply({
 						content: `La variable ${variable} a été éditée avec succès !\n Son contenu est : ${content}`,
-						ephemeral: true,
+						flags: MessageFlags.Ephemeral,
 					});
 				});
 			});
@@ -48,7 +48,7 @@ module.exports = {
 		else {
 			await interaction.reply({
 				content: '❌ Vous n\'avez pas l\'autorisation d\'utiliser cette commande.',
-				ephemeral: true,
+				flags: MessageFlags.Ephemeral,
 			});
 		}
 	},

@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require('discord.js');
+const { EmbedBuilder, MessageFlags } = require('discord.js');
 const errHandler = (err) => {console.error('ERREUR avec l\'ouverture d\'un ticket :', err);};
 const config = require('../config.json');
 const QLQ = process.env.QLQ;
@@ -65,7 +65,7 @@ module.exports = {
 				},
 				{
 					name:'Que faire en cas de problème ?',
-					value:`Merci de reporter tout problème (technique ou relatif à la teneur des échanges) dans ⁠<#${config.helpChannel}> ou en message privé à l'un des membres du Conseil d'Administration.`,
+					value:`Merci de reporter tout problème (technique ou relatif à la teneur des échanges) dans <#${config.helpChannel}> ou en message privé à l'un des membres du Conseil d'Administration.`,
 				},
 
 			)
@@ -97,7 +97,7 @@ module.exports = {
 			if (role) {
 				await interaction.reply({
 					embeds: [addembed],
-					ephemeral: true,
+					flags: MessageFlags.Ephemeral,
 				}).catch(errHandler);
 			}
 			else {
@@ -108,25 +108,20 @@ module.exports = {
 		const logsembed = new EmbedBuilder()
 			.setColor(config.Blue)
 			.setTitle('Nouveau ticket ouvert')
-			.setDescription(`${user.displayName} (${user.username} / <@!${user.id}>). Discussion sur ${title}, inscrit en catégorie ${Category.name}.`)
-			.setTimestamp();
-		// embed pour les logs anonymes du serveur interne
-		const hublogsembed = new EmbedBuilder()
-			.setColor(config.Blue)
-			.setTitle('Nouveau ticket ouvert')
-			.setDescription(`Discussion sur ${title}, inscrit en catégorie ${Category.name}.`)
-			.setTimestamp();
+			.setDescription(`Discussion sur ${title}, inscrit en catégorie ${Category.name}.`);
 		// logs pour l'ouverture effective du ticket sur le serveur externe
 		await client.channels.cache
 			.get(config.logsChannel)
 			.send({
+				content : `${user.displayName} (${user.username} / <@!${user.id}>) inscrit avec ${title} : <#${interaction.channel.id}>.`,
 				embeds: [logsembed],
 			}).catch(errHandler);
-		// logs pour l'ouverture effective du ticket sur le serveur externe
+		// logs pour l'ouverture effective du ticket sur le serveur interne
 		await client.channels.cache
 			.get(config.hublogsChannel)
 			.send({
-				embeds: [hublogsembed],
+				content : `Nouvelle discussion ouverte : ${title} dans le canal <#${interaction.channel.id}>.`,
+				embeds: [logsembed],
 			}).catch(errHandler);
 		await console.log('Ouverture ticket réussie');
 
@@ -140,7 +135,8 @@ module.exports = {
 			\nSi le manuscrit dont vous discutez fait partie de ceux sélectionnés pour l'étape 2 et que les résultats finaux n'ont pas encore été annoncés, souvenez-vous de ne pas donner d'information qui concernent l'étape en cours et conservez votre anonymat.
 			\nVous ne pouvez en aucun cas demander à l'auteur ou l'autrice de lever son anonymat ou lever celui des autres juges sans leur assentiment au cours de la discussion.
 			\n\n**Comment discuter ?** 
-			\nPour répondre, vous devez utiliser la commande /send. Il est conseillé de préparer votre message en avance pour éviter que l'envoi s'annule. Pour "destination", indiquez l'identifiant (ID) de la discussion : **${interaction.channel.id}**. Pour "juge", indiquez si vous étiez Juge 1 ou 2 à la première étape, ou Juge A, B, C ou D à la deuxième (voir le tableau du Qui lit quoi). Après l'envoi de la commande, écrivez le message que vous voulez envoyer. Vous pouvez y joindre des fichiers (images, documents) qui seront également transmis à l'auteur.              
+			\nPour répondre, vous devez utiliser la commande /autosend. Préparez votre message en avance pour éviter que l'envoi s'annule. Pour "juge", indiquez si vous étiez Juge 1 ou 2 à la première étape, ou Juge A, B, C ou D à la deuxième (voir le tableau du Qui lit quoi). Après l'envoi de la commande, écrivez le message que vous voulez envoyer. Vous pouvez y joindre des fichiers (images, documents) qui seront également transmis à l'auteur.
+			\nVous pouvez aussi utiliser la commande /send ou /say : pour "destination", indiquez l'identifiant (ID) de la discussion : **${interaction.channel.id}**.              
 			\nLe tableau Qui lit quoi avec les informations sur les manuscrits, la correspondance des numéros des juges et les liens des fiches fusionnées : ${QLQ}` },
 			autoArchiveDuration: 10080,
 		}).catch(errHandler);

@@ -1,4 +1,4 @@
-const { ChannelType } = require('discord.js');
+const { ChannelType, MessageFlags } = require('discord.js');
 const errHandler = (err) => {console.error('ERREUR avec la demande ouverture de ticket :', err);};
 const config = require('../config.json');
 
@@ -7,7 +7,7 @@ module.exports = {
 	async execute(interaction) {
 		// créer le ticket
 		const newThread = await interaction.channel.threads.create({
-			name: `Ticket ${interaction.user.displayName} (${interaction.user.username})`,
+			name: `Ticket ${interaction.member.displayName} (${interaction.user.username})`,
 			type: ChannelType.PrivateThread,
 			autoArchiveDuration: 10080,
 		}).catch(errHandler);
@@ -30,7 +30,7 @@ module.exports = {
 		}
 		await interaction.reply({
 			content: `Ouverture de ticket dans <#${newThread.id}> : vous pouvez y écrire votre demande.`,
-			ephemeral: true,
+			flags: MessageFlags.Ephemeral,
 		}).catch(errHandler)
 			.then(console.log('Bouton des tickets envoyé !'));
 	},

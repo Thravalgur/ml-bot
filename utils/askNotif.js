@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require('discord.js');
+const { EmbedBuilder, MessageFlags } = require('discord.js');
 const errHandler = (err) => {console.error('ERREUR avec la demande du rôle Notifications :', err);};
 const config = require('../config.json');
 const varspath = '../config-vars.json';
@@ -29,7 +29,7 @@ module.exports = {
 			await member.roles.remove(notifrole)
 				.then (interaction.reply({
 					embeds: [noembed],
-					ephemeral: true,
+					flags: MessageFlags.Ephemeral,
 				}))
 				.catch(errHandler);
 		}
@@ -39,7 +39,7 @@ module.exports = {
 			if (role) {
 				await interaction.reply({
 					embeds: [addembed],
-					ephemeral: true,
+					flags: MessageFlags.Ephemeral,
 				})
 					.catch(errHandler);
 			}

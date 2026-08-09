@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require('discord.js');
+const { EmbedBuilder, MessageFlags } = require('discord.js');
 const errHandler = (err) => {console.error('ERREUR avec l\'attribution ou les logs du rôle Inscrit :', err);};
 const config = require('../config.json');
 const varspath = '../config-vars.json';
@@ -26,7 +26,7 @@ module.exports = {
 		if (role) {
 			await interaction.reply({
 				embeds: [addembed],
-				ephemeral: true,
+				flags: MessageFlags.Ephemeral,
 			})
 				.catch(errHandler);
 			// envoyer les logs

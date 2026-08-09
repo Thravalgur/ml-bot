@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, MessageFlags } = require('discord.js');
 const errHandler = (err) => {console.error('ERREUR avec la commande /say :', err);};
 const config = require('../config.json');
 
@@ -12,11 +12,12 @@ module.exports = {
 				.setRequired(true))
 		.addStringOption(option =>
 			option.setName('juge')
-				.setDescription('Votre nom de juge (1 ou 2 / A, B, C ou D)')
+				.setDescription('Votre nom de juge (1 2, ou 3 / A, B, C ou D)')
 				.setRequired(true)
 				.addChoices(
 					{ name: '1 (étape 1)', value: '1' },
 					{ name: '2 (étape 1)', value: '2' },
+					{ name: '3 (étape 1)', value: '3' },
 					{ name: 'A (étape 2)', value: 'a' },
 					{ name: 'B (étape 2)', value: 'b' },
 					{ name: 'C (étape 2)', value: 'c' },
@@ -73,7 +74,7 @@ module.exports = {
 		else {
 			await interaction.reply({
 				content: '❌ Vous n\'avez pas l\'autorisation d\'utiliser cette commande.',
-				ephemeral: true,
+				flags: MessageFlags.Ephemeral,
 			});
 		}
 	},
